@@ -1,49 +1,191 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 ---
 
 <!doctype html>
-<html lang="en">
+<html class="scroll-smooth" lang="ja">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
+	<body class="bg-surface font-body text-on-surface overflow-x-hidden">
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
+
+		<!-- Hero Section -->
+		<section class="relative min-h-screen flex items-center pt-24 pb-16 px-8 bg-surface overflow-hidden">
+			<div class="absolute inset-0 z-0 opacity-8 pointer-events-none">
+				<img
+					class="w-full h-full object-cover"
+					src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGOJrN_FLDYa5qAEJdGZOPGtgwmVtIzlC47L6tJFrN0t4i3k7UTKlKWJkGgbMN_jGWDJS1Rb-FXrPilBl2XucPd3f6flVl0ULkdjHYQwbgha_ITSY8XuIgeXydmbKoMoiiIFdsXDSjCHXhDPln2tAvTRH8Cwm1evV8DCwULEsM_D3dVJO7ASiU5PnUlbyfeCC8J0Qsl3RdJIlHNZy-SLQ26ndHOiLG69zziMIWPxuH6yrPg2TbPSJoOwcWiD5_TihvJFYw599YHcQ"
+					alt=""
+					width="1920"
+					height="1080"
+				/>
+			</div>
+			<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
+				<div class="lg:col-span-10">
+					<h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.12] mb-6 text-primary font-bold tracking-tight" style="font-family: var(--font-body)">
+						複雑なドメインをロジカルに具現化
+					</h1>
+					<p class="text-xl md:text-2xl lg:text-3xl leading-snug mb-8 text-on-surface font-medium" style="font-family: var(--font-body)">
+						一発で「正解」を実装するフルスタックテックリード
+					</p>
+					<p class="text-base md:text-lg text-secondary max-w-3xl leading-9 mb-16">
+						複雑な介護・金融ドメインを即座に構造化し、最短ルートで具現化。セキスペの防衛設計と予備試験の論理が、手戻りなき「一発回答」を実現します。
+					</p>
+					<div class="flex flex-wrap gap-4">
+						<div class="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-full border border-outline-variant/20">
+							<span class="material-symbols-outlined text-secondary text-sm">verified_user</span>
+							<span class="text-xs tracking-wider uppercase" style="font-family: var(--font-label)">Security Specialist</span>
+						</div>
+						<div class="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-full border border-outline-variant/20">
+							<span class="material-symbols-outlined text-secondary text-sm">gavel</span>
+							<span class="text-xs tracking-wider uppercase" style="font-family: var(--font-label)">Legal Logic</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Core Value Section -->
+		<section class="py-28 px-8 bg-surface-container-low">
+			<div class="max-w-7xl mx-auto">
+				<div class="mb-20">
+					<span class="text-xs tracking-[0.2em] uppercase text-on-primary-container mb-4 block" style="font-family: var(--font-label)">Expertise</span>
+					<h2 class="text-4xl text-primary" style="font-family: var(--font-headline)">強み・専門領域</h2>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div class="bg-surface-container-lowest p-10 group hover:bg-surface-bright transition-all duration-500">
+						<div class="w-12 h-12 flex items-center justify-center bg-secondary-container rounded-full mb-8">
+							<span class="material-symbols-outlined text-on-secondary-container">translate</span>
+						</div>
+						<h3 class="text-2xl text-primary mb-6" style="font-family: var(--font-headline)">圧倒的なドメイン翻訳力</h3>
+						<p class="text-on-surface-variant leading-relaxed">
+							1.5人月の工数を3日に短縮する設計力。複雑な業務知識を即座にコードへ落とし込み、システムの形へと昇華させます。
+						</p>
+					</div>
+					<div class="bg-surface-container-lowest p-10 group hover:bg-surface-bright transition-all duration-500">
+						<div class="w-12 h-12 flex items-center justify-center bg-secondary-container rounded-full mb-8">
+							<span class="material-symbols-outlined text-on-secondary-container">shield</span>
+						</div>
+						<h3 class="text-2xl text-primary mb-6" style="font-family: var(--font-headline)">防衛的システム設計</h3>
+						<p class="text-on-surface-variant leading-relaxed">
+							登録セキスペとしての知見に加え、訴訟リスクまで考慮したログ設計とガバナンス構築。守りから攻めるアーキテクチャ。
+						</p>
+					</div>
+					<div class="bg-surface-container-lowest p-10 group hover:bg-surface-bright transition-all duration-500">
+						<div class="w-12 h-12 flex items-center justify-center bg-secondary-container rounded-full mb-8">
+							<span class="material-symbols-outlined text-on-secondary-container">psychology</span>
+						</div>
+						<h3 class="text-2xl text-primary mb-6" style="font-family: var(--font-headline)">AI共生型開発</h3>
+						<p class="text-on-surface-variant leading-relaxed">
+							AIを駆使した超速開発と、人間による緻密な要件定義・品質管理の融合。論理の正確性と開発速度を両立させます。
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section class="py-28 px-8 bg-surface" id="projects">
+			<div class="max-w-7xl mx-auto">
+				<div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+					<div class="max-w-xl">
+						<span class="text-xs tracking-[0.2em] uppercase text-on-primary-container mb-4 block" style="font-family: var(--font-label)">Selected Works</span>
+						<h2 class="text-4xl text-primary" style="font-family: var(--font-headline)">主な実績</h2>
+					</div>
+					<div class="text-on-surface-variant italic border-l-2 border-tertiary-fixed pl-6 py-2" style="font-family: var(--font-body)">
+						技術の卓越性は、社会への適合性と正当性によって証明される。
+					</div>
+				</div>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+					<div class="group">
+						<div class="aspect-video bg-surface-container-low mb-8 overflow-hidden rounded-lg">
+							<img
+								class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaFYiTlxyMJNEK6V-JkWCcsiqsdmbTLdIQGDYJ4DUwu379jBbz5HAm0gbCKc37L9NrGD58Qwei81hF4HtMd1W12kwVx2dWYuLfd2PS965YX_FyNIMmiz096tY4k5vxNGK2eU8yPjGNX6j2CV_K1P5BLA2WA9XQ0jrlTK2kUWFMVDBiPbCIGKn1OYEFW-rlN38Z3G6kk7bgb0sK0gg1C4Di6OihD0DK2iYr_oiBpBVppRlJBlbHa0HJsh5WwLd1i-qMhEZfzjGcZBk"
+								alt="介護事業所向け事務支援システム"
+								width="720"
+								height="405"
+							/>
+						</div>
+						<div class="flex gap-4 mb-4">
+							<span class="text-[10px] tracking-widest uppercase bg-secondary-container text-on-secondary-container px-3 py-1" style="font-family: var(--font-label)">PM / Tech Lead</span>
+						</div>
+						<h3 class="text-2xl mb-4 group-hover:text-primary transition-colors" style="font-family: var(--font-headline)">介護事業所向け事務支援システム</h3>
+						<p class="text-on-surface-variant mb-6">見積もり精度の向上とアジャイルフレームワークの導入。リリース後の不具合報告ゼロを達成した堅牢な開発管理。</p>
+					</div>
+					<div class="group">
+						<div class="aspect-video bg-surface-container-low mb-8 overflow-hidden rounded-lg">
+							<img
+								class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7pMA0yyrrYnMzwUAl-iNtyQ5Yd8WCBj86wTdcB2_CuWXNgbQIBz-B7iQi6chAzJe9FcXnLsJiY6hb_M6xjG7nT8k9h8Jdi1Qgio3WE78IxfGu1VXak9HUZ9pk-PjtRWWIetpISpfTRrzx-Oi4QKmh7HVeS1egRRQU-jbeNtncDJMpDkzYsu9RRLRjjSrf02qgVNAVR64iIsMg3Bi5FQsbM5obKOx0Y7uL8fuaidMdsMFCH5t3VrBAmc1_ia-TdDnWJLCJOn5s3YI"
+								alt="FXレポート自動化・高速化"
+								width="720"
+								height="405"
+							/>
+						</div>
+						<div class="flex gap-4 mb-4">
+							<span class="text-[10px] tracking-widest uppercase bg-secondary-container text-on-secondary-container px-3 py-1" style="font-family: var(--font-label)">Python / Go</span>
+						</div>
+						<h3 class="text-2xl mb-4 group-hover:text-primary transition-colors" style="font-family: var(--font-headline)">FXレポート自動化・高速化</h3>
+						<p class="text-on-surface-variant mb-6">5時間の処理を10分へ短縮。メモリ効率を5倍に改善し、金融グレードのパフォーマンスと整合性を担保。</p>
+					</div>
+				</div>
+				<div class="mt-12 bg-surface-container-low p-12 rounded-xl border border-outline-variant/10">
+					<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+						<div class="lg:col-span-4">
+							<span class="text-[10px] tracking-widest uppercase text-on-primary-container mb-4 block" style="font-family: var(--font-label)">API Infrastructure</span>
+							<h3 class="text-2xl mb-4" style="font-family: var(--font-headline)">大規模介護記録システム</h3>
+							<div class="text-tertiary-fixed-dim text-3xl italic mb-6" style="font-family: var(--font-headline)">20M JPY Scale</div>
+						</div>
+						<div class="lg:col-span-8">
+							<p class="text-lg text-on-surface mb-6 leading-relaxed">
+								API Tech Leadとして数百におよぶAPI群を管理。Postmanを活用した高密度なコラボレーションにより、大規模開発におけるインターフェースの整合性と品質を徹底管理。
+							</p>
+							<div class="flex flex-wrap gap-4">
+								<span class="text-sm text-secondary" style="font-family: var(--font-label)">#API_Management</span>
+								<span class="text-sm text-secondary" style="font-family: var(--font-label)">#Enterprise_Scale</span>
+								<span class="text-sm text-secondary" style="font-family: var(--font-label)">#Tech_Leadership</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Recent Blog Posts -->
+		<section class="py-20 px-8 bg-surface-container-low">
+			<div class="max-w-7xl mx-auto">
+				<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+					<div>
+						<span class="text-xs tracking-[0.2em] uppercase text-on-primary-container mb-4 block" style="font-family: var(--font-label)">Knowledge Base</span>
+						<h2 class="text-4xl text-primary" style="font-family: var(--font-headline)">Recent Posts</h2>
+					</div>
+					<a href="/blog" class="text-secondary hover:text-primary transition-colors font-medium text-sm">すべて見る →</a>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					{posts.map((post) => (
+						<a href={`/blog/${post.id}/`} class="group bg-surface-container-lowest p-8 block no-underline hover:bg-surface-bright transition-all duration-300">
+							<p class="text-[10px] tracking-widest uppercase text-on-primary-container mb-4" style="font-family: var(--font-label)">Article</p>
+							<h3 class="text-xl text-primary mb-4 group-hover:text-secondary transition-colors" style="font-family: var(--font-headline)">{post.data.title}</h3>
+							<p class="text-on-surface-variant text-sm leading-relaxed mb-6">{post.data.description}</p>
+							<p class="text-xs text-secondary" style="font-family: var(--font-label)"><FormattedDate date={post.data.pubDate} /></p>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
 		<Footer />
 	</body>
 </html>
+
