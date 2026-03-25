@@ -9,6 +9,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 3);
+
+const works = (await getCollection('works'))
+	.sort((a, b) => {
+		const featuredDiff = Number(b.data.featured ?? false) - Number(a.data.featured ?? false);
+		if (featuredDiff !== 0) {
+			return featuredDiff;
+		}
+		return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+	})
+	.slice(0, 3);
 ---
 
 <!doctype html>
@@ -106,58 +116,35 @@ const posts = (await getCollection('blog'))
 						技術の卓越性は、社会への適合性と正当性によって証明される。
 					</div>
 				</div>
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-					<div class="group">
-						<div class="aspect-video bg-surface-container-low mb-8 overflow-hidden rounded-lg">
-							<img
-								class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-								src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaFYiTlxyMJNEK6V-JkWCcsiqsdmbTLdIQGDYJ4DUwu379jBbz5HAm0gbCKc37L9NrGD58Qwei81hF4HtMd1W12kwVx2dWYuLfd2PS965YX_FyNIMmiz096tY4k5vxNGK2eU8yPjGNX6j2CV_K1P5BLA2WA9XQ0jrlTK2kUWFMVDBiPbCIGKn1OYEFW-rlN38Z3G6kk7bgb0sK0gg1C4Di6OihD0DK2iYr_oiBpBVppRlJBlbHa0HJsh5WwLd1i-qMhEZfzjGcZBk"
-								alt="介護事業所向け事務支援システム"
-								width="720"
-								height="405"
-							/>
-						</div>
-						<div class="flex gap-4 mb-4">
-							<span class="text-[10px] tracking-widest uppercase bg-secondary-container text-on-secondary-container px-3 py-1" style="font-family: var(--font-label)">PM / Tech Lead</span>
-						</div>
-						<h3 class="text-2xl mb-4 group-hover:text-primary transition-colors" style="font-family: var(--font-headline)">介護事業所向け事務支援システム</h3>
-						<p class="text-on-surface-variant mb-6">見積もり精度の向上とアジャイルフレームワークの導入。リリース後の不具合報告ゼロを達成した堅牢な開発管理。</p>
-					</div>
-					<div class="group">
-						<div class="aspect-video bg-surface-container-low mb-8 overflow-hidden rounded-lg">
-							<img
-								class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-								src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7pMA0yyrrYnMzwUAl-iNtyQ5Yd8WCBj86wTdcB2_CuWXNgbQIBz-B7iQi6chAzJe9FcXnLsJiY6hb_M6xjG7nT8k9h8Jdi1Qgio3WE78IxfGu1VXak9HUZ9pk-PjtRWWIetpISpfTRrzx-Oi4QKmh7HVeS1egRRQU-jbeNtncDJMpDkzYsu9RRLRjjSrf02qgVNAVR64iIsMg3Bi5FQsbM5obKOx0Y7uL8fuaidMdsMFCH5t3VrBAmc1_ia-TdDnWJLCJOn5s3YI"
-								alt="FXレポート自動化・高速化"
-								width="720"
-								height="405"
-							/>
-						</div>
-						<div class="flex gap-4 mb-4">
-							<span class="text-[10px] tracking-widest uppercase bg-secondary-container text-on-secondary-container px-3 py-1" style="font-family: var(--font-label)">Python / Go</span>
-						</div>
-						<h3 class="text-2xl mb-4 group-hover:text-primary transition-colors" style="font-family: var(--font-headline)">FXレポート自動化・高速化</h3>
-						<p class="text-on-surface-variant mb-6">5時間の処理を10分へ短縮。メモリ効率を5倍に改善し、金融グレードのパフォーマンスと整合性を担保。</p>
-					</div>
-				</div>
-				<div class="mt-12 bg-surface-container-low p-12 rounded-xl border border-outline-variant/10">
-					<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-						<div class="lg:col-span-4">
-							<span class="text-[10px] tracking-widest uppercase text-on-primary-container mb-4 block" style="font-family: var(--font-label)">API Infrastructure</span>
-							<h3 class="text-2xl mb-4" style="font-family: var(--font-headline)">大規模介護記録システム</h3>
-							<div class="text-tertiary-fixed-dim text-3xl italic mb-6" style="font-family: var(--font-headline)">20M JPY Scale</div>
-						</div>
-						<div class="lg:col-span-8">
-							<p class="text-lg text-on-surface mb-6 leading-relaxed">
-								API Tech Leadとして数百におよぶAPI群を管理。Postmanを活用した高密度なコラボレーションにより、大規模開発におけるインターフェースの整合性と品質を徹底管理。
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					{works.map((work) => (
+						<a href={`/works/${work.id}/`} class="group bg-surface-container-lowest p-6 no-underline hover:bg-surface-container-low transition-all duration-300">
+							{work.data.heroImage && (
+								<div class="aspect-video bg-surface-container-low mb-6 overflow-hidden rounded-lg">
+									<img
+										class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+										src={work.data.heroImage}
+										alt={work.data.title}
+										loading="lazy"
+										decoding="async"
+									/>
+								</div>
+							)}
+							{work.data.role && (
+								<div class="flex gap-4 mb-4">
+									<span class="text-[10px] tracking-widest uppercase bg-secondary-container text-on-secondary-container px-3 py-1" style="font-family: var(--font-label)">{work.data.role}</span>
+								</div>
+							)}
+							<h3 class="text-2xl mb-4 group-hover:text-primary transition-colors" style="font-family: var(--font-headline)">{work.data.title}</h3>
+							<p class="text-on-surface-variant mb-6">{work.data.description}</p>
+							<p class="text-xs text-secondary" style="font-family: var(--font-label)">
+								<FormattedDate date={work.data.pubDate} />
 							</p>
-							<div class="flex flex-wrap gap-4">
-								<span class="text-sm text-secondary" style="font-family: var(--font-label)">#API_Management</span>
-								<span class="text-sm text-secondary" style="font-family: var(--font-label)">#Enterprise_Scale</span>
-								<span class="text-sm text-secondary" style="font-family: var(--font-label)">#Tech_Leadership</span>
-							</div>
-						</div>
-					</div>
+						</a>
+					))}
+				</div>
+				<div class="mt-10 text-right">
+					<a href="/works" class="text-secondary hover:text-primary transition-colors font-medium text-sm no-underline">実績一覧を見る →</a>
 				</div>
 			</div>
 		</section>
