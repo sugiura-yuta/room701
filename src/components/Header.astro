@@ -4,30 +4,26 @@ import HeaderLink from './HeaderLink.astro';
 
 	<nav class="fixed inset-x-0 top-0 z-50 border-b border-outline-variant/10 bg-white/80 backdrop-blur-md">
 	<div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-		<div class="shrink-0 text-lg font-bold tracking-tight text-primary sm:text-xl" style="font-family: var(--font-headline)">
-			Intellectual Tech
-		</div>
+		<a href="/" class="shrink-0 text-lg font-bold tracking-tight text-primary no-underline sm:text-2xl tracking-wider" style="font-family: var(--font-logo)">
+			Room701
+		</a>
 		<div class="hidden md:flex items-center gap-8 lg:gap-12">
 			<HeaderLink
 				href="/works"
 				class="text-on-surface-variant font-medium hover:text-primary transition-colors no-underline"
 			>Works</HeaderLink>
 			<HeaderLink
-				href="/#projects"
-				class="text-on-surface-variant font-medium hover:text-primary transition-colors no-underline"
-			>Projects</HeaderLink>
-			<HeaderLink
 				href="/about"
 				class="text-on-surface-variant font-medium hover:text-primary transition-colors no-underline"
-			>Specialization</HeaderLink>
+			>About</HeaderLink>
 			<HeaderLink
 				href="/blog"
 				class="text-on-surface-variant font-medium hover:text-primary transition-colors no-underline"
 			>Blog</HeaderLink>
 		</div>
 		<a
-			href="/about#contact"
+			href="#contact"
 			class="hidden sm:inline-block satin-gradient rounded-md px-4 py-2 text-sm font-medium text-on-primary transition-all duration-300 hover:opacity-90 no-underline lg:px-6 lg:py-2.5"
-		>Consultation</a>
+		>Contact</a>
 	</div>
 </nav>

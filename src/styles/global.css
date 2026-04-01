@@ -61,6 +61,7 @@
   --font-headline: "Noto Serif JP", "Noto Serif", serif;
   --font-body: "Noto Serif JP", "Noto Serif", serif;
   --font-label: "Inter", sans-serif;
+  --font-logo: var(--font-libre-baskerville);
 
   /* ── Border radius ───────────────────────────────────────── */
   --radius: 0.125rem;

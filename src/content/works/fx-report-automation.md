@@ -2,7 +2,7 @@
 title: FXレポート自動化・高速化
 description: 5時間の処理を10分へ短縮し、メモリ効率を5倍に改善。金融グレードの整合性を維持した自動化を実現。
 pubDate: 2024-07-15
-role: Python / Go
+role: Developer / Data Analyst
 technologies:
   - Python
   - Go

@@ -19,7 +19,7 @@ const blog = defineCollection({
 
 const works = defineCollection({
   loader: glob({ base: "./src/content/works", pattern: "**/*.{md,mdx}" }),
-  schema: () =>
+  schema: ({ image }) =>
     z.object({
       title: z.string(),
       description: z.string(),
@@ -27,7 +27,7 @@ const works = defineCollection({
       updatedDate: z.coerce.date().optional(),
       role: z.string().optional(),
       technologies: z.array(z.string()).optional(),
-      heroImage: z.url().optional(),
+      heroImage: z.union([image(), z.url()]).optional(),
       featured: z.boolean().optional(),
     }),
 });

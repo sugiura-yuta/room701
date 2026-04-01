@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import ContactSection from '../components/ContactSection.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
@@ -19,6 +20,9 @@ const works = (await getCollection('works'))
 		return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
 	})
 	.slice(0, 3);
+
+const getHeroImageSrc = (heroImage?: string | { src: string }) =>
+	typeof heroImage === 'string' ? heroImage : heroImage?.src;
 ---
 
 <!doctype html>
@@ -113,35 +117,39 @@ const works = (await getCollection('works'))
 						<h2 class="text-4xl text-primary" style="font-family: var(--font-headline)">主な実績</h2>
 					</div>
 					<div class="text-on-surface-variant italic border-l-2 border-tertiary-fixed pl-6 py-2" style="font-family: var(--font-body)">
-						技術の卓越性は、社会への適合性と正当性によって証明される。
+						仕様の厳密な解釈で、手戻りのない最短の実装を実現
 					</div>
 				</div>
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{works.map((work) => (
-						<a href={`/works/${work.id}/`} class="group bg-surface-container-lowest p-6 no-underline hover:bg-surface-container-low transition-all duration-300">
-							{work.data.heroImage && (
-								<div class="aspect-video bg-surface-container-low mb-6 overflow-hidden rounded-lg">
-									<img
-										class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-										src={work.data.heroImage}
-										alt={work.data.title}
-										loading="lazy"
-										decoding="async"
-									/>
-								</div>
-							)}
-							{work.data.role && (
-								<div class="flex gap-4 mb-4">
-									<span class="text-[10px] tracking-widest uppercase bg-secondary-container text-on-secondary-container px-3 py-1" style="font-family: var(--font-label)">{work.data.role}</span>
-								</div>
-							)}
-							<h3 class="text-2xl mb-4 group-hover:text-primary transition-colors" style="font-family: var(--font-headline)">{work.data.title}</h3>
-							<p class="text-on-surface-variant mb-6">{work.data.description}</p>
-							<p class="text-xs text-secondary" style="font-family: var(--font-label)">
-								<FormattedDate date={work.data.pubDate} />
-							</p>
-						</a>
-					))}
+					{works.map((work) => {
+						const heroImageSrc = getHeroImageSrc(work.data.heroImage);
+
+						return (
+							<a href={`/works/${work.id}/`} class="group bg-surface-container-lowest p-6 no-underline hover:bg-surface-container-low transition-all duration-300">
+								{heroImageSrc && (
+									<div class="aspect-video bg-surface-container-low mb-6 overflow-hidden rounded-lg">
+										<img
+											class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+											src={heroImageSrc}
+											alt={work.data.title}
+											loading="lazy"
+											decoding="async"
+										/>
+									</div>
+								)}
+								{work.data.role && (
+									<div class="flex gap-4 mb-4">
+										<span class="text-[10px] tracking-widest uppercase bg-secondary-container text-on-secondary-container px-3 py-1" style="font-family: var(--font-label)">{work.data.role}</span>
+									</div>
+								)}
+								<h3 class="text-2xl mb-4 group-hover:text-primary transition-colors" style="font-family: var(--font-headline)">{work.data.title}</h3>
+								<p class="text-on-surface-variant mb-6">{work.data.description}</p>
+								<p class="text-xs text-secondary" style="font-family: var(--font-label)">
+									<FormattedDate date={work.data.pubDate} />
+								</p>
+							</a>
+						);
+					})}
 				</div>
 				<div class="mt-10 text-right">
 					<a href="/works" class="text-secondary hover:text-primary transition-colors font-medium text-sm no-underline">実績一覧を見る →</a>
@@ -155,7 +163,7 @@ const works = (await getCollection('works'))
 				<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
 					<div>
 						<span class="text-xs tracking-[0.2em] uppercase text-on-primary-container mb-4 block" style="font-family: var(--font-label)">Knowledge Base</span>
-						<h2 class="text-4xl text-primary" style="font-family: var(--font-headline)">Recent Posts</h2>
+						<h2 class="text-4xl text-primary" style="font-family: var(--font-headline)">ブログ</h2>
 					</div>
 					<a href="/blog" class="text-secondary hover:text-primary transition-colors font-medium text-sm">すべて見る →</a>
 				</div>
@@ -172,6 +180,7 @@ const works = (await getCollection('works'))
 			</div>
 		</section>
 
+		<ContactSection />
 		<Footer />
 	</body>
 </html>
