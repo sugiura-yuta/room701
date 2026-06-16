@@ -1,62 +1,34 @@
-# Astro Starter Kit: Blog
+# Room701 — Yuta Sugiura Portfolio
 
-```sh
-pnpm create astro@latest -- --template blog
-```
+「Security × Legal Mind」を掲げる杉浦悠太のポートフォリオサイト。
+複雑なドメイン（介護・金融）を構造化し、セキュリティとリーガルマインドを織り込んだ
+設計・実装の実績を発信する。
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- 本番URL: https://site.room701.workers.dev
+- 技術スタック: Astro v6 / Tailwind CSS v4 / TypeScript
+- ホスティング: Cloudflare Workers
 
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## ディレクトリ構成
 
 ```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+src/
+├── components/   ヘッダー・フッター・コンタクト等の共通UI
+├── content/
+│   ├── blog/     技術記事（Markdown / MDX）
+│   └── works/    実績ケース（Markdown）
+├── layouts/      記事・実績ページのレイアウト
+├── pages/        ルーティング（index / about / blog / works）
+└── styles/       グローバルCSS
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+実績は `src/content/works/`、ブログは `src/content/blog/` に Markdown を追加するだけで増やせる。
+各ファイルの frontmatter スキーマは `src/content.config.ts` を参照。
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## コマンド
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+| コマンド | 内容 |
+| :--- | :--- |
+| `pnpm install` | 依存をインストール |
+| `pnpm dev` | 開発サーバ起動（`localhost:4321`） |
+| `pnpm build` | `./dist/` へ本番ビルド |
+| `pnpm preview` | ビルド結果をローカルプレビュー |

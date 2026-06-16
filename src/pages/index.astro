@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import heroBackground from '../assets/blog-placeholder-about.jpg';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -38,7 +39,7 @@ const getHeroImageSrc = (heroImage?: string | { src: string }) =>
 			<div class="absolute inset-0 z-0 opacity-8 pointer-events-none">
 				<img
 					class="w-full h-full object-cover"
-					src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGOJrN_FLDYa5qAEJdGZOPGtgwmVtIzlC47L6tJFrN0t4i3k7UTKlKWJkGgbMN_jGWDJS1Rb-FXrPilBl2XucPd3f6flVl0ULkdjHYQwbgha_ITSY8XuIgeXydmbKoMoiiIFdsXDSjCHXhDPln2tAvTRH8Cwm1evV8DCwULEsM_D3dVJO7ASiU5PnUlbyfeCC8J0Qsl3RdJIlHNZy-SLQ26ndHOiLG69zziMIWPxuH6yrPg2TbPSJoOwcWiD5_TihvJFYw599YHcQ"
+					src={heroBackground.src}
 					alt=""
 					width="1920"
 					height="1080"
