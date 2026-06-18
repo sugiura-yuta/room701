@@ -13,7 +13,7 @@ technologies:
   - AWS WAF
   - AWS CDK
   - Postman
-heroImage: ../../assets/top/api_image.jpg
+heroImage: ../../assets/work-large-scale-care-api.jpg
 featured: true
 ---
 

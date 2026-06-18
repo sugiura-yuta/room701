@@ -9,7 +9,7 @@ technologies:
   - PostgreSQL
   - 月次集計バッチ
   - リスクマトリクス
-heroImage: ../../assets/blog-placeholder-1.jpg
+heroImage: ../../assets/work-user-state-scoring.jpg
 featured: true
 ---
 

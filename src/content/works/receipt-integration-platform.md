@@ -12,7 +12,7 @@ technologies:
   - AWS KMS
   - GitHub Actions
   - Sentry
-heroImage: ../../assets/blog-placeholder-3.jpg
+heroImage: ../../assets/work-receipt-integration.jpg
 featured: true
 ---
 

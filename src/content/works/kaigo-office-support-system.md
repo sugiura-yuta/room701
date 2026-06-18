@@ -12,7 +12,7 @@ technologies:
   - DynamoDB
   - ECS
   - AWS CDK
-heroImage: ../../assets/blog-placeholder-2.jpg
+heroImage: ../../assets/work-kaigo-office-support.jpg
 featured: false
 ---
 

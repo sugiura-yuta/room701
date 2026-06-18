@@ -9,7 +9,7 @@ technologies:
   - Next.js
   - AWS CDK
   - 生成AI開発体制
-heroImage: ../../assets/blog-placeholder-5.jpg
+heroImage: ../../assets/work-ai-driven-development.jpg
 featured: false
 ---
 

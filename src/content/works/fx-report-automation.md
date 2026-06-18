@@ -9,7 +9,7 @@ technologies:
   - MySQL
   - Data Pipeline
   - Performance Tuning
-heroImage: ../../assets/blog-placeholder-4.jpg
+heroImage: ../../assets/work-fx-report-automation.jpg
 featured: false
 ---
 
