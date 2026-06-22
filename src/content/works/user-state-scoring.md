@@ -11,6 +11,7 @@ technologies:
   - リスクマトリクス
 heroImage: ../../assets/work-user-state-scoring.jpg
 featured: true
+category: Engineering
 ---
 
 ## 背景

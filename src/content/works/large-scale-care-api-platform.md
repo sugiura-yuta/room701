@@ -15,6 +15,7 @@ technologies:
   - Postman
 heroImage: ../../assets/work-large-scale-care-api.jpg
 featured: true
+category: Engineering
 ---
 
 ## 背景

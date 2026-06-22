@@ -22,8 +22,8 @@ const posts = (await getCollection('blog')).sort(
 		<section class="pt-40 pb-20 px-8 bg-surface">
 			<div class="max-w-7xl mx-auto mb-16">
 				<span class="text-xs tracking-[0.2em] uppercase text-on-primary-container mb-4 block" style="font-family: var(--font-label)">Blog</span>
-				<h1 class="text-5xl text-primary" style="font-family: var(--font-headline)">Security x Legal Mind の実践メモ</h1>
-				<p class="text-on-surface-variant mt-4 text-lg max-w-2xl">設計思想、脅威分析、クラウドセキュリティ、学習ログを記録しています。</p>
+				<h1 class="text-5xl text-primary" style="font-family: var(--font-headline)">Engineering, Analytics &amp; Logic の実践メモ</h1>
+				<p class="text-on-surface-variant mt-4 text-lg max-w-2xl">設計思想、データ分析、クラウドセキュリティ、学習ログを記録しています。</p>
 			</div>
 			<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{
@@ -32,7 +32,7 @@ const posts = (await getCollection('blog')).sort(
 							href={`/blog/${post.id}/`}
 							class="group bg-surface-container-lowest p-8 block no-underline hover:bg-surface-container-low transition-all duration-300"
 						>
-							<p class="text-[10px] tracking-widest uppercase text-on-primary-container mb-4" style="font-family: var(--font-label)">Article</p>
+							<p class="text-[10px] tracking-widest uppercase text-on-primary-container mb-4" style="font-family: var(--font-label)">{post.data.category ?? 'Article'}</p>
 							<h2 class="text-xl text-primary mb-4 group-hover:text-secondary transition-colors" style="font-family: var(--font-headline)">{post.data.title}</h2>
 							<p class="text-on-surface-variant text-sm leading-relaxed mb-6">{post.data.description}</p>
 							<p class="text-xs text-secondary" style="font-family: var(--font-label)">

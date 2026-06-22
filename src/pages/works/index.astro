@@ -49,7 +49,7 @@ const getHeroImageSrc = (heroImage?: string | { src: string }) =>
 										/>
 									</div>
 								)}
-								<p class="text-[10px] tracking-widest uppercase text-on-primary-container mb-4" style="font-family: var(--font-label)">Case Study</p>
+								<p class="text-[10px] tracking-widest uppercase text-on-primary-container mb-4" style="font-family: var(--font-label)">{work.data.category ?? 'Case Study'}</p>
 								<h2 class="text-xl text-primary mb-4 group-hover:text-secondary transition-colors" style="font-family: var(--font-headline)">{work.data.title}</h2>
 								<p class="text-on-surface-variant text-sm leading-relaxed mb-6">{work.data.description}</p>
 								{work.data.role && (

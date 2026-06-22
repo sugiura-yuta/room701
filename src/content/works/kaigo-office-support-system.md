@@ -14,6 +14,7 @@ technologies:
   - AWS CDK
 heroImage: ../../assets/work-kaigo-office-support.jpg
 featured: false
+category: Engineering
 ---
 
 ## 背景

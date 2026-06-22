@@ -11,6 +11,7 @@ technologies:
   - Performance Tuning
 heroImage: ../../assets/work-fx-report-automation.jpg
 featured: false
+category: Data Analytics
 ---
 
 ## 背景

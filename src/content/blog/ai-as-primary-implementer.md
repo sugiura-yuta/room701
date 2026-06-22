@@ -2,6 +2,7 @@
 title: 生成AIを「実装の主役」に据える開発体制のつくりかた
 description: Claude Code を実装の主役に、人間はドメイン品質の担保に専念する。見積1.5人月を3人日に圧縮し、顧客フィードバック0件を実現した体制設計の考え方。
 pubDate: 2026-06-10
+category: Engineering
 heroImage: ../../assets/blog-placeholder-5.jpg
 ---
 

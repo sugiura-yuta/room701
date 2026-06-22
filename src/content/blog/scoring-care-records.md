@@ -2,6 +2,7 @@
 title: 介護記録から「状態」をスコア化する：リスクマトリクス応用の設計
 description: 性質のバラバラな記録項目を、意味のある5カテゴリのスコアへ変換する。集計パターンの分類と、安全性評価へのリスクマトリクス応用について。
 pubDate: 2026-05-20
+category: Data Analytics
 heroImage: ../../assets/blog-placeholder-1.jpg
 ---
 
