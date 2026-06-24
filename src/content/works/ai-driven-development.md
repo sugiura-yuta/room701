@@ -11,6 +11,7 @@ technologies:
   - 生成AI開発体制
 heroImage: ../../assets/work-ai-driven-development.jpg
 featured: false
+category: Engineering
 ---
 
 ## 背景

@@ -14,6 +14,8 @@ const blog = defineCollection({
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
       heroImage: z.optional(image()),
+      // 3本柱: Engineering / Data Analytics / Security & Legal
+      category: z.string().optional(),
     }),
 });
 
@@ -29,6 +31,8 @@ const works = defineCollection({
       technologies: z.array(z.string()).optional(),
       heroImage: z.union([image(), z.url()]).optional(),
       featured: z.boolean().optional(),
+      // 3本柱: Engineering / Data Analytics / Security & Legal
+      category: z.string().optional(),
     }),
 });
 

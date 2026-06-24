@@ -14,6 +14,7 @@ technologies:
   - Sentry
 heroImage: ../../assets/work-receipt-integration.jpg
 featured: true
+category: Engineering
 ---
 
 ## 背景

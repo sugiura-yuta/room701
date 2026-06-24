@@ -2,6 +2,7 @@
 title: 5時間を10分に：金融バッチ高速化で本当に効いた設計判断
 description: 並列化やコンパイル言語への移植は手段にすぎない。整合性を金融グレードで保ったまま処理を高速化するために、どこから手をつけるか。
 pubDate: 2026-04-15
+category: Data Analytics
 heroImage: ../../assets/blog-placeholder-4.jpg
 ---
 
